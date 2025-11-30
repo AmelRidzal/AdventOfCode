@@ -16,11 +16,11 @@ ifstream file("input");
         return 1;
     }
 
-    vector<vector<long long int>> grid;   
+    vector<vector<long long int>> grid;   // each line becomes one vector<int>
     string line;
 
     while (getline(file, line)) {
-        if (line.empty()) continue;  
+        if (line.empty()) continue;  // skip blank lines
 
         stringstream ss(line);
         vector<long long int> row;
@@ -32,7 +32,7 @@ ifstream file("input");
         grid.push_back(row);
     }
 
-    
+    // Prlong long int to confirm
     for (const auto& row : grid) {
         for (char x : row) cout << x << " ";
         cout << "\n";
