@@ -34,8 +34,16 @@ ifstream file("input");
 
     
     for (const auto& row : grid) {
-        for (char x : row) cout << x << " ";
+        for (long long int x : row) cout << x << " ";
         cout << "\n";
     }
+
+    for(int i=0;i<grid.size();i++){
+        for(int j=0;j<grid.at(i).size();j++){
+
+
+        }
+    }
+
     return 0;
 }
