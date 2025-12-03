@@ -6,7 +6,7 @@ using namespace std;
 
 
 
-
+typedef unsigned long long int ull;
 
 int main(){
 
@@ -16,15 +16,15 @@ ifstream file("input");
         return 1;
     }
 
-    vector<vector<long long int>> grid;   
+    vector<vector<ull>> grid;   
     string line;
 
     while (getline(file, line)) {
         if (line.empty()) continue;  
 
         stringstream ss(line);
-        vector<long long int> row;
-        long long int x;
+        vector<ull> row;
+        ull x;
         while (ss >> x) {
             row.push_back(x);
         }
@@ -34,12 +34,12 @@ ifstream file("input");
 
     
     for (const auto& row : grid) {
-        for (long long int x : row) cout << x << " ";
+        for (ull x : row) cout << x << " ";
         cout << "\n";
     }
 
-    for(int i=0;i<grid.size();i++){
-        for(int j=0;j<grid.at(i).size();j++){
+    for(ull i=0;i<grid.size();i++){
+        for(ull j=0;j<grid.at(i).size();j++){
 
 
         }

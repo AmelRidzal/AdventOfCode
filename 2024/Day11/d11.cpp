@@ -6,7 +6,9 @@
 using namespace std;
 
 
-int getDigits(int);
+typedef unsigned long long int ull;
+
+ull getDigits(ull);
 
 
 
@@ -18,54 +20,65 @@ ifstream file("input");
         return 1;
     }
 
-    vector<long long int> row;   
+    vector<ull> row;   
     string line;
 
     while (getline(file, line)) {
         if (line.empty()) continue;  
 
         stringstream ss(line);
-        long long int x;
+        ull x;
         while (ss >> x) {
             row.push_back(x);
         }
     }
 
     
-        for (long long int x : row) cout << x << " ";
+        for (ull x : row) cout << x << " ";
         cout << "\n";
 
 
 
 
-    for(int i=0;i<25;i++){
+    for(ull i=0;i<75;i++){
         cout<<"After "<<i+1<<" blink:"<<endl;
-        for(int j=0;j<row.size();j++){
+        for(ull j=0;j<row.size();j++){
             if(row[j]==0){
                 row[j]=1;
             }else{ 
-                int numOfDigits=getDigits(row[j]);
+                ull numOfDigits=getDigits(row[j]);
                 if(numOfDigits%2==0){
-                    int first=row[j], second=0;
-                    for(int k=0;k<numOfDigits/2;k++){
-                        second=pow((first%10),k);
+                    ull first=row[j], second=0;
+                    for(ull k=0;k<numOfDigits/2;k++){
+                        second=second+ (first%10)*pow(10,k);
                         first=first/10;
                     }
+                    row.push_back(row.at(row.size()-1));
+                    for(ull k=1;k<row.size()-j-1;k++){
+                        row.at(row.size()-1-k)=row.at(row.size()-2-k);
+                    }
+                    row.at(j)=first; //cout<<first<<" "<<second<<endl;
+                    row.at(j+1)=second;
+                    j++;
                 }else{
-                    row[j]*=2025;
+                    row[j]*=2024;
                 }
             }
         }
-        for (long long int x : row) cout << x << " ";
-        cout << "\n";
+        if(i==74){
+            for (ull x : row) cout << x << " ";
+            cout << "\n";
+        }
 
     }
+
+    cout<<row.size()<<endl;
 
     return 0;
 }
 
-int getDigits(int x){
-    int ret=0;
+ull getDigits(ull x){
+    ull ret=0;
     while(x>0){
         ret++;
         x=x/10;
