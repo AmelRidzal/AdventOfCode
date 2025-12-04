@@ -47,10 +47,10 @@ ifstream file("input");
 
     ull rez=0;
     for(ull i=0;i<grid.size();i++){
-        grid.at(i).at(0)+=grid.at(i).at(2)*2024;
+        grid.at(i).at(0)+=grid.at(i).at(2)*8179;
         while(grid.at(i).at(0)>=101)grid.at(i).at(0)-=101;
         while(grid.at(i).at(0)<0)grid.at(i).at(0)+=101;
-        grid.at(i).at(1)+=grid.at(i).at(3)*2024;
+        grid.at(i).at(1)+=grid.at(i).at(3)*8179;
         while(grid.at(i).at(1)>=103)grid.at(i).at(1)-=103;
         while(grid.at(i).at(1)<0)grid.at(i).at(1)+=103;
     }
