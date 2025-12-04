@@ -43,13 +43,13 @@ ifstream file("input");
                 ss >> c;
             }
             ss>>x;
-            x=x+10000000000000;
+            //x=x+10000000000000;
             row.push_back(x);
             for(ull i=0;i<3;i++){
                 ss >> c;
             }
             ss>>x;
-            x=x+10000000000000;
+            //x=x+10000000000000;
             row.push_back(x);
             grid.push_back(row);
             row.clear();
@@ -116,15 +116,26 @@ ifstream file("input");
                 praviRez=praviRez+p.first*3+p.second;
             }
         }
-        /*
-        for(auto p:posX){cout<<p.first<<" "<<p.second<<endl;}
-        cout<<endl;
-        for(auto p:posY){cout<<p.first<<" "<<p.second<<endl;}
-        cout<<endl;
-        cout<<endl;
-        */
+        //for(auto p:posX){cout<<p.first<<" "<<p.second<<endl;}
+        //cout<<endl;
+        //for(auto p:posY){cout<<p.first<<" "<<p.second<<endl;}
+        //cout<<endl;
+        //cout<<endl;
     }
 
+    
+    /*
+    for(ull i=0;i<grid.size();i++){
+        ull D=grid.at(i).at(0)*grid.at(i).at(3)-grid.at(i).at(2)*grid.at(i).at(1);
+        if(D!=0){
+            ull B=(grid.at(i).at(1)*grid.at(i).at(4)-grid.at(i).at(0)*grid.at(i).at(5))/(grid.at(i).at(2)*grid.at(i).at(1)-grid.at(i).at(0)*grid.at(i).at(3));
+            ull A=(grid.at(i).at(4)-grid.at(i).at(2)*B)/grid.at(i).at(0);
+            if(B<100000000){
+                praviRez=praviRez+A+B;
+                cout<<A<<" "<<B<<endl;
+            }
+        }
+    }*/
 
     cout<<praviRez;
     return 0;
