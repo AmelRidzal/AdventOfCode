@@ -5,3 +5,4 @@ day04: https://www.youtube.com/watch?v=9BKcKuo13WE
 day05: https://www.youtube.com/watch?v=rTUy0jgLq3s
 day06: https://www.youtube.com/watch?v=LtTXa1Mxvyg
 day07: https://www.youtube.com/watch?v=pCs_tmad9DM
+day08: https://www.youtube.com/watch?v=bYd-BuiHzyw
