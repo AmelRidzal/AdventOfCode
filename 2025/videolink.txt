@@ -7,3 +7,6 @@ day06: https://www.youtube.com/watch?v=LtTXa1Mxvyg
 day07: https://www.youtube.com/watch?v=pCs_tmad9DM
 day08: https://www.youtube.com/watch?v=bYd-BuiHzyw
 day09: https://www.youtube.com/watch?v=ewGByPm3JIE
+day10: https://www.youtube.com/watch?v=lj6wdCfmqAc
+day11: https://www.youtube.com/watch?v=hhDPkegVT1E
+day12: https://www.youtube.com/watch?v=acCJIeBoO2w
