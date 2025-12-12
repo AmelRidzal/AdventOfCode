@@ -31,7 +31,6 @@ ifstream file("input");
         row.first=x;
         ss>>x;
         row.second=x;
-        //if (line.find('-') == string::npos) {readingFirst = false;}
 
         grid.push_back(row);
     }
@@ -80,11 +79,11 @@ ifstream file("input");
                 }
             }
             if(!check){
-                    max=temp1;
+                max=temp1;
             }
         }
     }
-cout<<max;
+    cout<<max;
     return 0;
 }
 

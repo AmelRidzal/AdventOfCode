@@ -13,7 +13,7 @@ long long int strToInt(string );
 
 int main(){
 
-ifstream file("input");
+    ifstream file("input");
     if (!file) {
         cerr << "Could not open file!\n";
         return 1;
@@ -27,33 +27,28 @@ ifstream file("input");
     while (getline(file, line)) {
         if (line.empty()) continue;  
 
-        if (line.find('+') != string::npos) {readingFirst = false;}
+        if (line.find('+') != string::npos) {
+            readingFirst = false;
+        }
         if(readingFirst){
-        /*stringstream ss(line);
-        vector<ull> row;
-        ull x;
-        while (ss >> x) {
-            row.push_back(x);
-        }*/
-
-        grid.push_back(line);
-    }else{ 
-        stringstream ss(line);
-        char x;
-        while (ss >> x) {
-            sign.push_back(x);
+            grid.push_back(line);
+        }else{ 
+            stringstream ss(line);
+            char x;
+            while (ss >> x) {
+                sign.push_back(x);
+            }
         }
     }
-}
 
     
-    for (const auto& row : grid) {
+    /*for (const auto& row : grid) {
         cout << row <<endl;
     }
-        for (char x : sign) cout << x << " ";
-                cout << "\n";
+    for (char x : sign) cout << x << " ";
+    cout << "\n";*/
 
-    ull rez=0;
+    ull rezp2=0;
 
     vector<vector<ull>> newRez;
     vector<string> vecString;
@@ -68,17 +63,16 @@ ifstream file("input");
         
     }
 
-    cout<<" stringove"<<endl;
+    /*cout<<" stringove"<<endl;
     for (const auto& row : vecString) {
-        cout<<row<<" ";
-        cout <<endl;
-    }
+        cout<<row<<endl;
+    }*/
 
     vector<vector<long long int>> finalFormat;
         vector<long long int> tempp;
     for(int i=0;i<vecString.size();i++){
             long long int x = strToInt(vecString.at(i));
-            cout<<x<<endl;
+            //cout<<x<<endl;
         if(x!=0){
             tempp.push_back(x);
         }else{
@@ -86,34 +80,34 @@ ifstream file("input");
             tempp.clear();
         }
     }
-            finalFormat.push_back(tempp);
+    finalFormat.push_back(tempp);
 
     
-    cout<<" ull"<<endl;
+    /*cout<<" ull"<<endl;
     for (const auto& row : finalFormat) {
             for(ull a:row) cout<<a<<" ";
         cout <<endl;
-    }
+    }*/
 
-    cout<<endl<<endl<<finalFormat.size()<<endl;
+    //cout<<endl<<endl<<finalFormat.size()<<endl;
     for(int i=0;i<finalFormat.size();i++){
         ull temp=0;
         if(sign.at(sign.size()-i-1)=='*'){ 
             temp++;
         }
-        cout<<finalFormat.at(i).size()<<endl;
+        //cout<<finalFormat.at(i).size()<<endl;
         for(int j=0;j<finalFormat.at(i).size();j++){
-            cout<<sign.at(sign.size()-i-1)<<" ";
+            //cout<<sign.at(sign.size()-i-1)<<" ";
             if(sign.at(sign.size()-i-1)=='+'){
                 temp+=finalFormat[i][j];
             }else{
                 temp*=finalFormat[i][j];
             }
         }
-        rez+=temp;
+        rezp2+=temp;
     }
 
-    cout<< rez;
+    cout<<"part2: "<< rezp2<<endl;
 
     return 0;
 }

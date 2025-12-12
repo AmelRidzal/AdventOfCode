@@ -33,12 +33,12 @@ ifstream file("input");
     }
 
     
-    for (const auto& row : grid) {
+    /*for (const auto& row : grid) {
         for (char x : row) cout << x << " ";
         cout << "\n";
-    }
+    }*/
     ull rez=0;
-bool removed=true;
+    bool removed=true;
     while(removed){
         removed=false;
         for(ull i=0;i<grid.size();i++){
@@ -88,6 +88,5 @@ bool removed=true;
     }
 }
     cout<<rez;
-
     return 0;
 }

@@ -52,25 +52,26 @@ ifstream file("input");
         for (ull x : row) cout << x << " ";
         cout << "\n";
     }
-        cout << "\n";
-        for (ull x : vec) cout << x << " ";
-        cout << "\n";*/
+    cout << "\n";
+    for (ull x : vec) cout << x << " ";
+    cout << "\n";*/
 
-        ull rez=0;
-    //for(ull i=0;i<grid.size();i++){
-        /*for(ull j=0;j<vec.size();j++){
+    //part1
+    ull rezp1=0;
+    for(ull i=0;i<grid.size();i++){
+        for(ull j=0;j<vec.size();j++){
             if(vec.at(j)!=-1){
                 if(vec.at(j)>=grid[i][0] && vec.at(j)<=grid[i][1]){
-                    rez++;
-                    cout<<vec.at(j)<<" ";
+                    rezp1++;
+                    //cout<<vec.at(j)<<" ";
                     vec.at(j)=-1;
                 }
             }
-        }*/
+        }
+    }
 
-
-
-    //}
+    //part2
+    ull rezp2=0;
     vector<vector<ull>> grid2;
     
     sort(grid.begin(),grid.end());
@@ -95,20 +96,18 @@ ifstream file("input");
     }
 
     for(ull i=0;i<grid.size();i++){
-        rez+= grid[i][1]-grid[i][0]+1;
+        rezp2+= grid[i][1]-grid[i][0]+1;
     }
 
-
-
-    for(ull i=0;i<grid.size();i++){
+    /*for(ull i=0;i<grid.size();i++){
         for(ull x:grid.at(i)){
             cout<<x<<" ";
         }
         cout<<endl;
-    }
+    }*/
 
-
-cout<<rez;
+    cout<<"part1: "<<rezp1<<endl;
+    cout<<"part2: "<<rezp2<<endl;
     return 0;
 }
 

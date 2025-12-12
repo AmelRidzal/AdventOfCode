@@ -1,49 +1,101 @@
-#include <bits/stdc++.h>
-#include <chrono>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
 using namespace std;
 
-map<tuple<string, bool, bool>, long long> memo;
+typedef unsigned long long int ull;
 
-long long dfs(map<string, vector<string>> &adj, string curr, bool fft, bool dac) {
-    if (curr == "out") {
-        return (fft && dac) ? 1 : 0;
-    }
-    long long ans = 0;
+void followTree(const vector<vector<string>> &, const string &, ull &);
 
-    if (memo.find(tuple(curr, fft, dac)) != memo.end()) {
-        return memo[make_tuple(curr, fft, dac)];
-    }
-
-    for (string &child : adj[curr]) {
-        if (child == "fft")
-            ans += dfs(adj, child, true, dac);
-        else if (child == "dac")
-            ans += dfs(adj, child, fft, true);
-        else 
-            ans += dfs(adj, child, fft, dac);
-    }
-    return memo[make_tuple(curr, fft, dac)] = ans;
-}
 
 int main() {
-    //auto start = chrono::high_resolution_clock::now();
-    map<string, vector<string>> adj;
-    ifstream inputFile("input");
+
+    ifstream file("input");
+    if (!file) {
+        cerr << "Could not open file!\n";
+        return 1;
+    }
+
+    vector<vector<string>> grid;   
     string line;
-    while (getline(inputFile, line)) {
-        stringstream ss(line);
-        string word;
-        vector<string> v;
-        while (ss >> word) {
-            v.push_back(word);
+
+    while (getline(file, line)) {
+        if (line.empty()) continue;
+
+        vector<string> row;
+        int n = line.size();
+        int idx = 0;
+
+        // take first 3 chars → index 0
+        if (idx + 3 <= n) {
+            row.push_back(line.substr(idx, 3));
+            idx += 3;
         }
 
-        for (int i = 1; i < v.size(); i++) {
-            adj[v[0].substr(0, v[0].size() - 1)].push_back(v[i]);
+        // skip 2 chars
+        idx += 2;
+
+        // take next 3 chars → index 1
+        if (idx + 3 <= n) {
+            row.push_back(line.substr(idx, 3));
+            idx += 3;
+        }
+
+        // now loop: skip 1, take 3, push...
+        while (true) {
+            idx += 1;                 // skip 1
+            if (idx + 3 > n) break;    // not enough chars left
+            row.push_back(line.substr(idx, 3));
+            idx += 3;
+        }
+
+        grid.push_back(row);
+    }
+
+    // Print to verify
+    /*for (const auto &row : grid) {
+        for (const auto &s : row) {
+            cout << s << " ";
+        }
+        cout << "\n";
+    }*/
+    ull rezultat = 0;
+    followTree(grid, "you", rezultat);
+    cout << "Result = " << rezultat << "\n";
+
+    return 0;
+}
+
+void followTree(const vector<vector<string>> &grid, 
+                const string &cur, 
+                ull &rezultat)
+{
+    // find row where index 0 == cur
+    const vector<string>* found = nullptr;
+
+    for (const auto &row : grid) {
+        if (!row.empty() && row[0] == cur) {
+            found = &row;
+            break;
         }
     }
-    cout << dfs(adj, "svr", false, false) << endl;
-    //auto end = chrono::high_resolution_clock::now();
-    //chrono::duration<double> elapsed = end - start;
-    //cout << "Time taken: " <<elapsed.count() << " seconds\n";
+
+    // not found -> stop
+    if (found == nullptr) return;
+
+
+    // check the rest of the indexes
+    for (size_t i = 1; i < found->size(); i++) {
+        const string &next = found->at(i);
+
+        if (next == "out"){
+                rezultat++;
+                return;  // end of path
+            }
+
+        // recursively follow next string
+        followTree(grid, next, rezultat);
+    }
 }
+

@@ -40,7 +40,6 @@ ifstream file("input");
         row.push_back(x);
         ss>>x;
         row.push_back(x);
-        //if (line.find('-') == string::npos) {readingFirst = false;}
 
         grid.push_back(row);
     }
@@ -65,15 +64,7 @@ ifstream file("input");
         }
     }
 
-    /*priority_queue<tuple<ull, int, int>, vector<tuple<ull, int, int>>, greater<tuple<ull, int, int>>> temp1 = dgrid;
-    while (!temp1.empty())
-    {
-        tuple<ull, int, int> drow = temp1.top();
-        cout << get<0>(drow) << " "<< get<1>(drow) << " "<< get<2>(drow) << endl;
-        temp1.pop();
-    }*/
 
-    priority_queue<tuple<ull, int, int>, vector<tuple<ull, int, int>>, greater<tuple<ull, int, int>>> temp = dgrid;
     vector<int> loops;
     
     for(int k=0;k<grid.size();k++){
@@ -83,8 +74,8 @@ ifstream file("input");
     bool check=false;
     ull last1,last2;
     while(!check){
-        tuple<ull, int, int> tempRow = temp.top();
-        temp.pop();
+        tuple<ull, int, int> tempRow = dgrid.top();
+        dgrid.pop();
         ull a=get<1>(tempRow);
         ull b=get<2>(tempRow);
         last1=a;last2=b;
@@ -112,9 +103,9 @@ ifstream file("input");
         }
     }
     
-    for(auto x:loops){
+    /*for(auto x:loops){
         cout<<x<<" ";
-    }
+    }*/
     
     auto freq = countElements(loops);
     auto top3 = topThree(freq);
