@@ -10,3 +10,4 @@ day09: https://www.youtube.com/watch?v=ewGByPm3JIE
 day10: https://www.youtube.com/watch?v=lj6wdCfmqAc
 day11: https://www.youtube.com/watch?v=hhDPkegVT1E
 day12: https://www.youtube.com/watch?v=acCJIeBoO2w
+recap: https://www.youtube.com/watch?v=_3agJa2Exdo
