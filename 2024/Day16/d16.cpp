@@ -14,7 +14,6 @@ void goingUp(vector<vector<ull>>& , ull , ull , ull);
 void goingDown(vector<vector<ull>>& , ull , ull , ull);
 void goingLeft(vector<vector<ull>>& , ull , ull , ull);
 void goingRight(vector<vector<ull>>& , ull , ull , ull);
-bool checkRaskrsnica(vector<vector<ull>>& , ull , ull );
 
 ull posEX,posEY;
 
@@ -92,7 +91,7 @@ void goingUp(vector<vector<ull>>& grid, ull posX, ull posY, ull score){
     if(posX==posEX && posEY==posY){
         if(grid[posX][posY]>=score)
             grid[posX][posY]=score;
-        cout<<score<<endl;
+        //cout<<score<<endl;
         return;
     }
     grid[posX][posY]=score;
@@ -125,7 +124,7 @@ void goingDown(vector<vector<ull>>& grid, ull posX, ull posY, ull score){
     if(posX==posEX && posEY==posY){
         if(grid[posX][posY]>=score)
             grid[posX][posY]=score;
-        cout<<score<<endl;
+        //cout<<score<<endl;
         return;
     }
     grid[posX][posY]=score;
@@ -156,7 +155,7 @@ void goingRight(vector<vector<ull>>& grid, ull posX, ull posY, ull score){
     if(posX==posEX && posEY==posY){
         if(grid[posX][posY]>=score)
             grid[posX][posY]=score;
-        cout<<score<<endl;
+        //cout<<score<<endl;
         return;
     }
     grid[posX][posY]=score;
@@ -189,7 +188,7 @@ void goingLeft(vector<vector<ull>>& grid, ull posX, ull posY, ull score){
     if(posX==posEX && posEY==posY){
         if(grid[posX][posY]>=score)
             grid[posX][posY]=score;
-        cout<<score<<endl;
+        //cout<<score<<endl;
         return;
     }
     grid[posX][posY]=score;
